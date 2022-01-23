@@ -30,5 +30,9 @@ public class Usuario {
     @Getter @Setter @Column(name = "password")
     private String password;
 
+    @Getter @Setter @Column(name = "role")
+    private  String role;
 
+    @Getter @Setter @Column(name = "enabled")
+    private  boolean enabled;
 }

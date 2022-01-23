@@ -22,7 +22,7 @@ public class AuthRepositoryImp implements AuthRepository{
                 .setParameter("email", email)
                 .getResultList();
 
-        return lista.get(0);
+        return !lista.isEmpty() ? lista.get(0) : null;
     }
 
 }

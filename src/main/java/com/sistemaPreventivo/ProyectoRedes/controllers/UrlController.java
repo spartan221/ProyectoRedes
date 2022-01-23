@@ -9,18 +9,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UrlController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String redirectToLogin(){
-        return "redirect:login";
+    public String HomePage(){
+        return "redirect:/index";
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String goToIndex(){
+        return "index.html";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String goToLogin(){
         return "login.html";
     }
 
-    @RequestMapping(value = "register", method = RequestMethod.GET)
-    public String goToRegister(){
-        return "registro.html";
-    }
+
 
 }
