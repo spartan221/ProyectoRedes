@@ -1,7 +1,9 @@
 package com.sistemaPreventivo.ProyectoRedes.controllers;
 
 
+import com.sistemaPreventivo.ProyectoRedes.models.QueryReporteDto;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,14 +17,19 @@ public class UrlController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String goToIndex(){
-        return "index.html";
+        return "index";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String goToLogin(){
-        return "login.html";
+        return "login";
     }
 
+    @RequestMapping(value = "/consulta", method = RequestMethod.GET)
+    public String goToConsulta(Model model){
+        model.addAttribute("query", new QueryReporteDto());
+        return "consulta";
+    }
 
 
 }
