@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import java.util.List;
 
 
 @Controller
@@ -73,6 +70,29 @@ public class UsuarioController {
         }
         // Ingresa algo diferente a un numero telefónico para buscar
         return "consulta";
+
+    }
+
+
+    @RequestMapping(value = "/reporte", method = RequestMethod.POST)
+    public String makeReport(@Valid @ModelAttribute("reporte") ReporteDto reporteDto, BindingResult result, Model model){
+        if (!result.hasErrors()){
+
+            try {
+                // Existe un reporte con ese numero telefónico
+                Reporte reporte = reporteService.consultarReporte(Long.parseLong(reporteDto.getNumeroTelefonico()));
+                model.addAttribute("mensajeError", "Ya existe un reporte con el número telefónico: " + reporteDto.getNumeroTelefonico()
+                + " Por favor, diríjase a la sección de realizar comentario y escríbelo allí");
+                return "reporte";
+            }catch (ReporteDoesntExists e){
+                reporteService.saveReporte(reporteDto);
+                model.addAttribute("mensajeSuccess", "Se ha realizado correctamente el reporte");
+                return "reporte";
+            }
+
+
+        }
+        return "reporte";
 
     }
 
