@@ -96,6 +96,29 @@ public class UsuarioController {
 
     }
 
+    @RequestMapping(value = "/comentario", method = RequestMethod.POST)
+    public String makeComment(@Valid @ModelAttribute("comentario") ComentarioDto comentarioDto, BindingResult result, Model model){
+        if (!result.hasErrors()){
+
+            try {
+                // Existe un reporte con ese numero telefónico
+                Reporte reporte = reporteService.consultarReporte(Long.parseLong(comentarioDto.getNumeroTelefonico()));
+                usuarioService.makeComment(reporte, comentarioDto);
+                model.addAttribute("mensajeSuccess", "El comentario se ha realizado correctamente sobre" +
+                        " el número telefónico: " + comentarioDto.getNumeroTelefonico());
+                return "comentario";
+            }catch (ReporteDoesntExists e){
+                model.addAttribute("mensajeError", "No existe un reporte con el número telefónico: "
+                + comentarioDto.getNumeroTelefonico() + " .Por favor, realiza el reporte de este número");
+                return "comentario";
+            }
+
+
+        }
+        return "comentario";
+
+    }
+
 
 
 }

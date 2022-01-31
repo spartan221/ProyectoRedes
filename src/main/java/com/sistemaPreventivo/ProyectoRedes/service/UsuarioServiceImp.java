@@ -1,18 +1,24 @@
 package com.sistemaPreventivo.ProyectoRedes.service;
 
-import com.sistemaPreventivo.ProyectoRedes.models.Usuario;
-import com.sistemaPreventivo.ProyectoRedes.models.UsuarioDto;
+import com.sistemaPreventivo.ProyectoRedes.models.*;
+import com.sistemaPreventivo.ProyectoRedes.repository.ComentarioRepository;
 import com.sistemaPreventivo.ProyectoRedes.repository.UsuarioRepository;
 import com.sistemaPreventivo.ProyectoRedes.utils.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 @Service
 public class UsuarioServiceImp implements UsuarioService{
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private ComentarioRepository comentarioRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -40,5 +46,14 @@ public class UsuarioServiceImp implements UsuarioService{
         return usuarioRepository.getUserByUsername(email) != null;
     }
 
-    
+    @Override
+    public void makeComment(Reporte reporte, ComentarioDto comentarioDto) {
+        Comentario comentario = new Comentario();
+        comentario.setFecha(Date.valueOf(LocalDate.now()));
+        comentario.setOpinion(comentarioDto.getComentarioText());
+        comentario.setReporte(reporte);
+        comentarioRepository.save(comentario);
+    }
+
+
 }
