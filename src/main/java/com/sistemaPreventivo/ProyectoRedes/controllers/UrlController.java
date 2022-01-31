@@ -2,6 +2,7 @@ package com.sistemaPreventivo.ProyectoRedes.controllers;
 
 
 import com.sistemaPreventivo.ProyectoRedes.models.QueryReporteDto;
+import com.sistemaPreventivo.ProyectoRedes.models.ReporteDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +32,10 @@ public class UrlController {
         return "consulta";
     }
 
+    @RequestMapping(value = "/reporte", method = RequestMethod.GET)
+    public String goToReporte(Model model){
+        model.addAttribute("reporte", new ReporteDto());
+        return "reporte";
+    }
 
 }
