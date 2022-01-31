@@ -25,7 +25,6 @@
     <link rel="shortcut icon" th:href="@{/favicon.ico}" href="../static/favicon.ico" type="image/x-icon">
     <link rel="icon" th:href="@{/favicon.ico}" href="../static/favicon.ico" type="image/x-icon">
 
-
 </head>
 
 <body id="page-top">
@@ -75,6 +74,7 @@
                 <span>Realizar reporte</span></a>
         </li>
 
+        <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
@@ -83,6 +83,7 @@
                 <i class="fas fa-comment-alt"></i>
                 <span>Realizar comentario</span></a>
         </li>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -169,53 +170,52 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h1 mb-0 text-gray-800">Reportar número telefónico </h1>
+                    <h1 class="h1 mb-0 text-gray-800">Realiza un comentario</h1>
                 </div>
-
 
                 <div class="text-left">
                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 " style="width: 20rem;"
-                         th:src="@{/images/undraw_done_re_oak4.svg}" src="../static/images/undraw_done_re_oak4.svg" alt="...">
+                         th:src="@{/images/undraw_message_sent_re_q2kl.svg}" src="../static/images/undraw_message_sent_re_q2kl.svg" alt="...">
                 </div>
 
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <p class="h3 mb-0 text-black-50">Por favor, llene los campos a continuación para realizar el reporte.</p>
+                <div class="align-items-center justify-content-between mb-4">
+                    <p class="h3 mb-0 text-black-50">-Por favor, Digite a continuación el número telefónico y el comentario que quiere realizar sobre él.</p>
+                    <p class="h3 mb-0 text-black-50">-Para poder realizar un comentario, el número debe encontrarse reportado con anterioridad. El sistema le indicará si no se encuentra reportado.</p>
                 </div>
 
-                <form action="/reporte" class="user col-lg-4" method="post" th:object="${reporte}">
-                        <div class="form-group border bg-gray-200 ">
-                            <div class="col-sm-12 mb-3 mb-sm-0 py-2">
-                                <input th:field="*{nombreAlias}" type="text" class="form-control  border-bottom-primary"
-                                       id="exampleFirstName" placeholder="Alias">
-                            </div>
-                            <div class='alert alert-danger' th:if="${#fields.hasErrors('nombreAlias')}"
-                                 th:errors="*{nombreAlias}"></div>
-                            <div class="col-sm-12 mb-3 mb-sm-0 py-2">
-                                <input th:field="*{numeroTelefonico}" type="text"
-                                       class="form-control  border-bottom-primary" id="exampleLastName"
-                                       placeholder="Número telefónico">
-                            </div>
-                            <div class='alert alert-danger' th:if="${#fields.hasErrors('numeroTelefonico')}"
-                                 th:errors="*{numeroTelefonico}"></div>
-                            <div class="col-sm-12 mb-3 mb-sm-0 py-2">
-                                <textarea th:field="*{comentario}" class="form-control border-bottom-primary"
-                                          id="exampleInputEmail" rows="5" placeholder="Comentario"> </textarea>
-                            </div>
-                            <div class='alert alert-danger' th:if="${#fields.hasErrors('comentario')}"
-                                 th:errors="*{comentario}"></div>
+                <form action="/comentario" th:object="${comentario}" class="user col-lg-4" method="post" >
+                    <div class="form-group border bg-gray-200 ">
+                        <div class="col-sm-12 mb-3 mb-sm-0 py-2">
+                            <input th:field="*{numeroTelefonico}" type="text" class="form-control  border-bottom-primary"
+                                   id="exampleFirstName" placeholder="Número Telefónico">
                         </div>
-                        <div class="form-group ">
-                            <button type="submit" class="btn btn-success btn-icon-split">
+                        <div class='alert alert-danger' th:if="${#fields.hasErrors('numeroTelefonico')}"
+                             th:errors="*{numeroTelefonico}"></div>
+                        <div class="col-sm-12 mb-3 mb-sm-0 py-2">
+                                <textarea th:field="*{comentarioText}" class="form-control border-bottom-primary"
+                                          id="exampleInputEmail" rows="5" placeholder="Comentario"> </textarea>
+                        </div>
+                        <div class='alert alert-danger' th:if="${#fields.hasErrors('comentarioText')}"
+                             th:errors="*{comentarioText}"></div>
+                    </div>
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-success btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
                                         </span>
-                                <span class="text">Realizar reporte</span>
-                            </button>
-                        </div>
+                            <span class="text">Realizar comentario</span>
+                        </button>
+                    </div>
 
                 </form>
+
                 <div class='alert alert-success' th:if="${mensajeSuccess != null}" th:text="${mensajeSuccess}"></div>
                 <div class='alert alert-danger' th:if="${mensajeError != null} " th:text="${mensajeError}"></div>
+
+
+
+
+                </div>
 
             </div>
             <!-- /.container-fluid -->
@@ -281,8 +281,6 @@
 <!-- Page level custom scripts -->
 <script th:src="@{/js/demo/chart-area-demo.js}" src="../static/js/demo/chart-area-demo.js"></script>
 <script th:src="@{/js/demo/chart-pie-demo.js}" src="../static/js/demo/chart-pie-demo.js"></script>
-
-
 
 </body>
 

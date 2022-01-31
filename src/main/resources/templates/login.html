@@ -12,6 +12,7 @@
     <!-- Main css -->
     <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
 
+
     <link rel="shortcut icon" th:href="@{/favicon.ico}" href="../static/favicon.ico" type="image/x-icon">
     <link rel="icon" th:href="@{/favicon.ico}" href="../static/favicon.ico" type="image/x-icon">
 
@@ -44,6 +45,7 @@
                                 <!--a class="form-submit" onclick="iniciarSesion()">Iniciar Sesión</a-->
                                 <button class="form-submit" type="submit" value="login">Iniciar sesion</button>
                             </div>
+                            <div style="color: #96514A; border: 3px solid #FADBD8; border-radius: 5px; background-color: #FADBD8" th:if="${message != null}" th:text="${message}"></div>
                         </form>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 package com.sistemaPreventivo.ProyectoRedes.controllers;
 
 
+import com.sistemaPreventivo.ProyectoRedes.models.ComentarioDto;
 import com.sistemaPreventivo.ProyectoRedes.models.QueryReporteDto;
 import com.sistemaPreventivo.ProyectoRedes.models.ReporteDto;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,18 @@ public class UrlController {
     public String goToReporte(Model model){
         model.addAttribute("reporte", new ReporteDto());
         return "reporte";
+    }
+
+    @RequestMapping(value = "/comentario", method = RequestMethod.GET)
+    public String goToComentario(Model model){
+        model.addAttribute("comentario", new ComentarioDto());
+        return "comentario";
+    }
+
+    @RequestMapping(value = "/login-error", method = RequestMethod.GET)
+    public String goToLoginWithErrors(Model model){
+        model.addAttribute("message", "Ha ocurrido un error, sus credenciales son incorrectas");
+        return "login";
     }
 
 }

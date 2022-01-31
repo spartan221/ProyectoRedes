@@ -51,7 +51,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login", "/register", "/favicon.ico").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll()
+                .formLogin().loginPage("/login")
+                .permitAll()
+                .failureUrl("/login-error")
                 .and()
                 .logout().permitAll();
     }
