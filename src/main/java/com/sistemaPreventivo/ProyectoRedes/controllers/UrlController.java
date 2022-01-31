@@ -45,4 +45,10 @@ public class UrlController {
         return "comentario";
     }
 
+    @RequestMapping(value = "/login-error", method = RequestMethod.GET)
+    public String goToLoginWithErrors(Model model){
+        model.addAttribute("message", "Ha ocurrido un error, sus credenciales son incorrectas");
+        return "login";
+    }
+
 }

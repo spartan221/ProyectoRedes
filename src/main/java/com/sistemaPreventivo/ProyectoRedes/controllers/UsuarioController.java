@@ -36,9 +36,6 @@ public class UsuarioController {
     @PostMapping("/register")
     public String registerUserAccount(@Valid @ModelAttribute("usuario") UsuarioDto usuarioDto,
             BindingResult result, Model model )  {
-
-        System.out.println("result = " + result.hasErrors());
-
         if (!result.hasErrors()) {
 
             try {
