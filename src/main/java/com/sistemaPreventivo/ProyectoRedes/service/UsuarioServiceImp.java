@@ -9,6 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDate;
 
 @Service
@@ -50,6 +52,7 @@ public class UsuarioServiceImp implements UsuarioService{
     public void makeComment(Reporte reporte, ComentarioDto comentarioDto) {
         Comentario comentario = new Comentario();
         comentario.setFecha(Date.valueOf(LocalDate.now()));
+        comentario.setTimestamp(Timestamp.from(Instant.now()));
         comentario.setOpinion(comentarioDto.getComentarioText());
         comentario.setReporte(reporte);
         comentarioRepository.save(comentario);

@@ -1,6 +1,7 @@
 package com.sistemaPreventivo.ProyectoRedes.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "comentario")
@@ -32,5 +34,7 @@ public class Comentario {
     @Getter @Setter @Column(name = "opinion")
     private String opinion;
 
+    @Getter @Setter @Column(name = "time_posted")
+    private Timestamp timestamp;
 
 }

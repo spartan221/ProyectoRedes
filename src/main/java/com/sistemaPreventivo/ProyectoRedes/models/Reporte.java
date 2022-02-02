@@ -1,5 +1,6 @@
 package com.sistemaPreventivo.ProyectoRedes.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "reporte")
 @ToString @EqualsAndHashCode
+@JsonIgnoreProperties("comentarios")
 public class Reporte{
 
     @Id

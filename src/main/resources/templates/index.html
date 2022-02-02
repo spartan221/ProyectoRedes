@@ -83,14 +83,18 @@
                     <span>Realizar comentario</span></a>
             </li>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/estadisticas}">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Estadisticas</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
 
 
         </ul>
@@ -277,6 +281,31 @@
                                     <div class="float-right ">
                                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 20rem;"
                                              th:src="@{/images/undraw_information_tab_re_f0w3.svg}" src="../static/images/undraw_information_tab_re_f0w3.svg" alt="...">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <a href="#" class="btn btn-success btn-circle float-right">
+                                        <i class="fas fa-check"></i>
+                                    </a>
+                                    <h5 class="m-0 font-weight-bold text-primary ">Estadísticas</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="float-left fon">
+                                        <p class="font-weight-bold">
+                                            Para usar esta función, debe dirigirse al menú que encuentra en la parte <br>
+                                            lateral izquierda de la página y seleccionar la opción <strong>"Estadísticas"</strong> <br>
+                                            El sistema automáticamente le brindará la visualización de datos relevantes <br>
+                                            mediante gráficas con respecto a los datos almacenados en la base de datos. <br>
+                                            De igual manera, podrá visualizar los comentarios más recientes realizados en el sistema.<br>
+                                        </p>
+                                    </div>
+                                    <div class="float-right ">
+                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 20rem;"
+                                             th:src="@{/images/undraw_image_viewer_re_7ejc.svg}" src="../static/images/undraw_image_viewer_re_7ejc.svg" alt="...">
                                     </div>
                                 </div>
                             </div>
